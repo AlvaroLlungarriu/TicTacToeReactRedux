@@ -1,5 +1,6 @@
 import React from 'react';
 import Board from './Board';
+import { combineReducers, createStore } from 'redux';
 
 export default class Game extends React.Component {
     constructor(props) {

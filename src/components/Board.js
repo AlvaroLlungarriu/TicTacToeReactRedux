@@ -1,26 +1,27 @@
 import React from 'react';
+import { combineReducers, createStore} from 'redux';
+
+import Square from './Square';
 
 import './Board.css'
 
-function Square(props) {
+/*function Square(props) {
   return (
     <button className="square" onClick={props.onClick}>
       {props.value}
     </button>
   );
-}
+}*/
 
-export default class Board extends React.Component {
+export default class Board extends Component {
   renderSquare(i) {
     return (
-      <Square
-        value={this.props.squares[i]}
-        onClick={() => this.props.onClick(i)}
-      />
+      <Square pos={i} {...this.props} />
     );
   }
 
   render() {
+    console.log(this.props)
     return (
       <div>
         <div className="board-row">
