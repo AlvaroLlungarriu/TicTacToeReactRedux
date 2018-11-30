@@ -1,8 +1,28 @@
 import React from 'react';
 import Board from './Board';
 import { combineReducers, createStore } from 'redux';
+import { initGame } from '../actions/actions';
 
 export default class Game extends React.Component {
+  componentWillMount() {
+    this.props.dispatch(initGame())
+  }
+  render () {
+    return (
+      <div className="game">
+        <div className="game-board">
+          <Board {...this.props} />
+        </div>
+        <div className="game-info">
+        <div>Turno de: {this.props.game.turno}</div>
+        <ol>{}</ol>
+        </div>
+      </div>
+    );
+  }
+}
+
+/*export default class Game extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
@@ -104,4 +124,4 @@ export default class Game extends React.Component {
       }
     }
     return null;
-  }
+  }*/

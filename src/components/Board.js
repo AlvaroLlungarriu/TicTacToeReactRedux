@@ -13,7 +13,7 @@ import './Board.css'
   );
 }*/
 
-export default class Board extends Component {
+export default class Board extends React.Component {
   renderSquare(i) {
     return (
       <Square pos={i} {...this.props} />
