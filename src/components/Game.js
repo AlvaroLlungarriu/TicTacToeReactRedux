@@ -5,6 +5,7 @@ import { initGame } from '../actions/actions';
 
 export default class Game extends React.Component {
   componentWillMount() {
+    console.log(this.props)
     this.props.dispatch(initGame())
   }
   render () {
@@ -14,7 +15,7 @@ export default class Game extends React.Component {
           <Board {...this.props} />
         </div>
         <div className="game-info">
-        <div>Turno de: {this.props.game.turno}</div>
+        <div>{this.props.game.turn}</div>
         <ol>{}</ol>
         </div>
       </div>

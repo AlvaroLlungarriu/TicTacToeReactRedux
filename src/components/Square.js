@@ -3,6 +3,7 @@ import { setActive, calculateWinner } from "../actions/actions"
 
 export default class Square extends Component{
   handleClick () {
+    console.log(this.props.pos);
     this.props.dispatch(setActive(this.props.pos));
     this.props.dispatch(calculateWinner());
   }

@@ -3,17 +3,17 @@ import { MOVIMIENTO, INIT_GAME, WINNER } from '../constants/constants';
 export function setActive(i) {
     return {
         type: MOVIMIENTO,
-        playload: i
+        payload: i
     }
 }
 
-export function initGame(i) {
+export function initGame() {
     return {
         type: INIT_GAME
     }
 }
 
-export function calculateWinner(i) {
+export function calculateWinner() {
     return {
         type: WINNER
     }

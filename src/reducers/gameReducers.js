@@ -1,44 +1,50 @@
-import { MOVIMIENTO, INIT_GAME, WINNER } from '../actions/actions'
+import { MOVIMIENTO, INIT_GAME, WINNER } from '../constants/constants'
 
 export default function reducer ( state ={
     squares: [],
-    turno: 'X',
+    turn: 'X',
     xIsTrue: true,
     winner: false
 }, action ) {
     switch (action.type) {
         case INIT_GAME: {
+            let turn = state.turn;
             return {
                 ...state,
-                squares: Array.fill(null)
+                turn: "Turno de: " + turn,
+                squares: Array(9).fill(null),
             }
         }
         case MOVIMIENTO: {
+            console.log(action)
             let newState = [...state.squares];
-            let turn = state.xIsTrue;
-            let turno = state.turno;
+            let player = state.xIsTrue;
+            let turn = state.turn;
             if (state.winner === false) {
                 if (newState[action.payload] === null) {
                     newState[action.payload] = state.xIsTrue? 'X' : 'O';
-                    turno = state.xIsTrue? 'X' : 'O';
-                    turn = !state.xIsTrue;
+                    turn = state.xIsTrue? 'O' : 'X';
+                    player = !state.xIsTrue;
                     return {
                         ...state,
                         squares: newState,
-                        turno: turno,
-                        xIsTrue: turn
+                        turn: "Turno de: " + turn,
+                        xIsTrue: player
                     }
                 } else {
-                    return state;
+                    return {
+                        ...state,
+                        turn: "Ganador: " + turn
+                    }
                 }
             } else {
                 return {
-                    ...state,
-                    turno: "Ganador: " + turno
+                    ...state
                 }
             }
         }
         case WINNER: {
+            let turn = state.turn;
             function Winner() {
                 const lines = [
                     [0, 1, 2],
