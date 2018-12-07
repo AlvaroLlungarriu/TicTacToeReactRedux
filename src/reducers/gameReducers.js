@@ -32,10 +32,7 @@ export default function reducer ( state ={
                         xIsTrue: player
                     }
                 } else {
-                    return {
-                        ...state,
-                        turn: "Ganador: " + turn
-                    }
+                    return state;
                 }
             } else {
                 return {
@@ -67,7 +64,8 @@ export default function reducer ( state ={
             if (Winner() != null) {
                 return {
                     ...state,
-                    winner: true
+                    winner: true,
+                    turn: state.xIsTrue? 'Ganador: O' : 'Ganador: X'
                 }
             } else {
                 return state;
